@@ -11,32 +11,47 @@ import java.util.Map;
 public class Service {
 
     public String currentDay() {
-        GregorianCalendar newCal = new GregorianCalendar();
-        int day = newCal.get(Calendar.DAY_OF_WEEK);
+        LessonRepository lessonRepository = new LessonRepository();
+
+        String day = "";
+        Calendar c = Calendar.getInstance();
+        switch (c.get(Calendar.DAY_OF_WEEK)) {
+            case Calendar.MONDAY:
+                day = lessonRepository.lessons.get("MONDAY").toString();
+                break;
+            case Calendar.TUESDAY:
+                day = lessonRepository.lessons.get("TUESDAY").toString();
+                break;
+            case Calendar.WEDNESDAY:
+                day = lessonRepository.lessons.get("WEDNESDAY").toString();
+                break;
+            case Calendar.THURSDAY:
+                day = lessonRepository.lessons.get("THURSDAY").toString();
+                break;
+            case Calendar.FRIDAY:
+                day = lessonRepository.lessons.get("FRIDAY").toString();
+                break;
+            case Calendar.SATURDAY:
+                day = lessonRepository.lessons.get("SATURDAY").toString();
+                break;
+            case Calendar.SUNDAY:
+                day = lessonRepository.lessons.get("SUNDAY").toString();
+                break;
+        }
+
+        return day;
+    }
+
+    public String allDays() {
 
         LessonRepository lessonRepository = new LessonRepository();
-        Map<String, List<Lesson>> ls = lessonRepository.lessons;
-      //  Map<String, List<Lesson>> d = ls.keySet().toArray()[day];
-        String les = ls.values().toArray()[1].toString();
-
-        String key = ls.keySet().toArray(new String[ls.size()])[1];
-        List<Lesson> value = ls.get(key);
-
-        String less = value.toString();
-
 
         Map<String, List<Lesson>> all = lessonRepository.getAll();
-        // Пробегаемся по всем значениям карты
-        for (Map.Entry<String, List<Lesson>> stringListEntry : all.entrySet()) {
-            // получаем у дня все пары
-            List<Lesson> lessons = stringListEntry.getValue();
-//      Печатаем день недели
-            System.out.println(stringListEntry.getKey());
-//      Пробегаемся по всем парам текущего дня недели
-            for (Lesson lesson : lessons) {
-//        Печаем каждую пару
-                System.out.println(lesson);
-            }
-        }return   les;
+
+        String days = all.toString();
+
+        return days;
+
+
     }
 }

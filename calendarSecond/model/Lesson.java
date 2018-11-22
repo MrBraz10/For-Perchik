@@ -28,8 +28,7 @@ public class Lesson {
   @Override
   public String toString() {
     return "Lesson{" +
-            "name='" + name + '\'' +
-            ", day=" + day +
+            "name='" + name +
             '}';
   }
 }

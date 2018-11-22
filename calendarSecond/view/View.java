@@ -14,7 +14,7 @@ public class View {
     }
 
     public void print(String day) {
-        System.out.println( );
+        System.out.println(day);
     }
   }
 

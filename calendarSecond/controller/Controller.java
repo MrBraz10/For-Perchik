@@ -5,18 +5,19 @@ import calendarSecond.view.View;
 
 public class Controller {
 
-    View v = new View();
 
-    public void needMethod(View view) {
-        int num = view.read();
 
-        if (num == 1) {
-            Service v = new Service();
+    public String needMethod(int enter) {
 
+        if (enter == 1) {
+            Service service = new Service();
+            return service.currentDay();
         }
-        if (num == 2) {
-            Service v = new Service();
-
+        if (enter == 2) {
+            Service service = new Service();
+            return service.allDays();
+        } else {
+            return "";
         }
 
 
