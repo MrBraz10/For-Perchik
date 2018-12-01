@@ -10,47 +10,47 @@ import java.util.Map;
 
 public class Service {
 
-    public String currentDay() {
+   private List<Lesson> day;
+
+    public List<Lesson> getCurrentDaySchedule() {
+
         LessonRepository lessonRepository = new LessonRepository();
 
-        String day = "";
         Calendar c = Calendar.getInstance();
         switch (c.get(Calendar.DAY_OF_WEEK)) {
             case Calendar.MONDAY:
-                day = lessonRepository.lessons.get("MONDAY").toString();
+                day = lessonRepository.getByDay("MONDAY");
                 break;
             case Calendar.TUESDAY:
-                day = lessonRepository.lessons.get("TUESDAY").toString();
+                day = lessonRepository.getByDay("TUESDAY");
                 break;
             case Calendar.WEDNESDAY:
-                day = lessonRepository.lessons.get("WEDNESDAY").toString();
+                day = lessonRepository.getByDay("WEDNESDAY");
                 break;
             case Calendar.THURSDAY:
-                day = lessonRepository.lessons.get("THURSDAY").toString();
+                day = lessonRepository.getByDay("THURSDAY");
                 break;
             case Calendar.FRIDAY:
-                day = lessonRepository.lessons.get("FRIDAY").toString();
+                day = lessonRepository.getByDay("FRIDAY");
                 break;
             case Calendar.SATURDAY:
-                day = lessonRepository.lessons.get("SATURDAY").toString();
+                day = lessonRepository.getByDay("SATURDAY");
                 break;
             case Calendar.SUNDAY:
-                day = lessonRepository.lessons.get("SUNDAY").toString();
+                day = lessonRepository.getByDay("SUNDAY");
                 break;
         }
 
         return day;
     }
 
-    public String allDays() {
+    public Map<String, List<Lesson>> getWeekSchedule() {
 
         LessonRepository lessonRepository = new LessonRepository();
 
         Map<String, List<Lesson>> all = lessonRepository.getAll();
 
-        String days = all.toString();
-
-        return days;
+        return all;
 
 
     }

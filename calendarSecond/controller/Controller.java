@@ -11,12 +11,15 @@ public class Controller {
 
         if (enter == 1) {
             Service service = new Service();
-            return service.currentDay();
+            String lessons = service.getCurrentDaySchedule().toString();
+            return lessons;
         }
         if (enter == 2) {
             Service service = new Service();
-            return service.allDays();
-        } else {
+            String days = service.getWeekSchedule().toString();
+            return days;
+    }
+         else {
             return "";
         }
 

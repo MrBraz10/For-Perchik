@@ -8,24 +8,26 @@ import java.util.*;
 public class LessonRepository {
 
 
-  public Map<String, List<Lesson>> lessons = new TreeMap<>();
+  private Map<String, List<Lesson>> lessons = new TreeMap<>();
 
 
   public LessonRepository() {
-    lessons.put("THURSDAY", new ArrayList<>());
+    lessons.put("SATURDAY", new ArrayList<>());
     lessons.put("TUESDAY", new ArrayList<>());
     lessons.put("WEDNESDAY", new ArrayList<>());
 
+
+
     Lesson l = new Lesson();
     l.setName("Матем");
-    l.getDay().add("THURSDAY");
+    l.getDay().add("SATURDAY");
     l.getDay().add("TUESDAY");
 
     addLesson(l);
 
     Lesson l2 = new Lesson();
     l2.setName("Рус яз");
-    l2.getDay().add("THURSDAY");
+    l2.getDay().add("SATURDAY");
     l2.getDay().add("WEDNESDAY");
 
     addLesson(l2);
@@ -52,5 +54,15 @@ public class LessonRepository {
     }
   }
 
+  public List<Lesson> getByDay(String day) {
+
+    LessonRepository l = new LessonRepository();
+    List<Lesson> lesson;
+
+    lesson = l.lessons.get(day);
+
+    return lesson;
+
+  }
 
 }
